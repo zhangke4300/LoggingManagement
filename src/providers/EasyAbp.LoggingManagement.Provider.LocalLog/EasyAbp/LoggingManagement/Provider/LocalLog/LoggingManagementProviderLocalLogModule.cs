@@ -6,7 +6,7 @@ using Volo.Abp.Application;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 
-namespace EasyAbp.LoggingManagement.Provider.TencentCloudCls
+namespace EasyAbp.LoggingManagement.Provider.LocalLog
 {
     [DependsOn(
         typeof(LoggingManagementApplicationModule)

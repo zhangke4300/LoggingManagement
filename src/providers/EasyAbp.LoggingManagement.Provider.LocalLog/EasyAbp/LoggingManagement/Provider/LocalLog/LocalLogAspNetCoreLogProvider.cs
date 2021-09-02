@@ -9,32 +9,42 @@ using Microsoft.Extensions.Options;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Json;
 using Volo.Abp.Settings;
 
-namespace EasyAbp.LoggingManagement.Provider.TencentCloudCls
+namespace EasyAbp.LoggingManagement.Provider.LocalLog
 {
     public class LocalLogAspNetCoreLogProvider : IAspNetCoreLogProvider
     {
-        private const int Limit = 100;
-        
-        private readonly ISettingProvider _settingProvider;
-        private readonly ISearchLogResponseConverter _searchLogResponseConverter;
+       
         private readonly IAuditLogRepository _auditLogRepository;
+        private readonly IJsonSerializer _jsonSerializer;
 
         public LocalLogAspNetCoreLogProvider(
-            ISettingProvider settingProvider,
-            IAuditLogRepository auditLogRepository,
-            ISearchLogResponseConverter searchLogResponseConverter)
+            IJsonSerializer jsonSerializer,
+            IAuditLogRepository auditLogRepository)
         {
-            _settingProvider = settingProvider;
+            _jsonSerializer = jsonSerializer;
             _auditLogRepository = auditLogRepository;
-            _searchLogResponseConverter = searchLogResponseConverter;
         }
         
         public virtual async Task<PagedResultDto<SystemLogDto>> GetListAsync(string queryString, DateTime startTime,
             DateTime endTime, int maxResultCount, int skipCount)
         {
-            var result = await _auditLogRepository.GetListAsync(queryString, startTime:startTime, endTime, maxResultCount, skipCount);            
+            var count = await _auditLogRepository.GetCountAsync(queryString, startTime: startTime, endTime, maxResultCount, skipCount); 
+            var audits = await _auditLogRepository.GetListAsync(queryString, startTime:startTime, endTime, maxResultCount, skipCount);
+            var systemLogs = new List<SystemLogDto>();
+            foreach(var audit in audits)
+            {
+                systemLogs.Add(new SystemLogDto()
+                {
+                    Level = audit.Exceptions,
+                    LogName = audit.Url,
+                    LogValue = _jsonSerializer.Serialize(audit),
+                    Time = audit.ExecutionTime
+                });
+            }
+            return new PagedResultDto<SystemLogDto>(count, systemLogs);
         }
     }
 }
