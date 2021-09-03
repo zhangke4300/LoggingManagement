@@ -1,0 +1,9 @@
+{
+  "culture": "en",
+  "texts": {
+    "DisplayName:EasyAbp.LoggingManagement.Provider.LocalLog.AutoDeleteLog": "Auto delete",
+    "Description:EasyAbp.LoggingManagement.Provider.LocalLog.AutoDeleteLog": "whether auto delete logs",
+    "DisplayName:EasyAbp.LoggingManagement.Provider.LocalLog.DeleteDataOfDaysBefore": "Days",
+    "Description:EasyAbp.LoggingManagement.Provider.LocalLog.DeleteDataOfDaysBefore": "how long ago the data is that should be deleted"
+  }
+}

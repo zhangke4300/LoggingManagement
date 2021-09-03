@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\src\EasyAbp.LoggingManagement.Web\EasyAbp.LoggingManagement.Web.csproj" />
+    <ProjectReference Include="..\..\..\..\src\providers\EasyAbp.LoggingManagement.Provider.LocalLog\EasyAbp.LoggingManagement.Provider.LocalLog.csproj" />
     <ProjectReference Include="..\..\..\..\src\providers\EasyAbp.LoggingManagement.Provider.TencentCloudCls\EasyAbp.LoggingManagement.Provider.TencentCloudCls.csproj" />
     <ProjectReference Include="..\LoggingManagementSample.Application\LoggingManagementSample.Application.csproj" />
     <ProjectReference Include="..\LoggingManagementSample.HttpApi\LoggingManagementSample.HttpApi.csproj" />

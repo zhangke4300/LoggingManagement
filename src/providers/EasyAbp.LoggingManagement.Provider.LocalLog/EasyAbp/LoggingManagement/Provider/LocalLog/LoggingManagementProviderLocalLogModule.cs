@@ -2,8 +2,10 @@
 using EasyAbp.LoggingManagement.SystemLogs;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Volo.Abp;
 using Volo.Abp.Application;
 using Volo.Abp.AutoMapper;
+using Volo.Abp.BackgroundWorkers;
 using Volo.Abp.Modularity;
 
 namespace EasyAbp.LoggingManagement.Provider.LocalLog
@@ -17,6 +19,10 @@ namespace EasyAbp.LoggingManagement.Provider.LocalLog
         {
             context.Services.AddTransient<LocalLogAspNetCoreLogProvider>();
             context.Services.AddTransient<IAspNetCoreLogProvider, LocalLogAspNetCoreLogProvider>();
+        }
+        public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        {
+            context.AddBackgroundWorker<CleanLogBackgroudWorker>();
         }
     }
 }

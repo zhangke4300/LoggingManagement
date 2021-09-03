@@ -1,0 +1,9 @@
+{
+  "culture": "zh-Hans",
+  "texts": {
+    "DisplayName:EasyAbp.LoggingManagement.Provider.LocalLog.AutoDeleteLog": "自动删除日志",
+    "Description:EasyAbp.LoggingManagement.Provider.LocalLog.AutoDeleteLog": "是否自动删除日志",
+    "DisplayName:EasyAbp.LoggingManagement.Provider.LocalLog.DeleteDataOfDaysBefore": "时间",
+    "Description:EasyAbp.LoggingManagement.Provider.LocalLog.DeleteDataOfDaysBefore": "删除多久日期前的日志"
+  }
+}

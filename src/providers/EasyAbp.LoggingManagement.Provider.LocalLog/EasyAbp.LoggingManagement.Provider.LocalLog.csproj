@@ -8,18 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="EasyAbp\LoggingManagement\Provider\LocalLog\Settings\**" />
-    <EmbeddedResource Remove="EasyAbp\LoggingManagement\Provider\LocalLog\Settings\**" />
-    <None Remove="EasyAbp\LoggingManagement\Provider\LocalLog\Settings\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\EasyAbp.LoggingManagement.Application\EasyAbp.LoggingManagement.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EasyAbp.Abp.TencentCloud.Cls" Version="$(EasyAbpAbpTencentCloudModuleVersion)" />
     <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="14.4.0" />
+    <PackageReference Include="Volo.Abp.BackgroundWorkers" Version="14.4.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="14.4.0" />
   </ItemGroup>
 
 </Project>

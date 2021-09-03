@@ -40,6 +40,7 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using EasyAbp.LoggingManagement.Provider.LocalLog;
 
 namespace LoggingManagementSample.Web
 {
@@ -58,7 +59,8 @@ namespace LoggingManagementSample.Web
         typeof(AbpAspNetCoreSerilogModule),
         typeof(AbpSwashbuckleModule),
         typeof(LoggingManagementWebModule),
-        typeof(LoggingManagementProviderTencentCloudClsModule)
+        //typeof(LoggingManagementProviderTencentCloudClsModule)
+        typeof(LoggingManagementProviderLocalLogModule)
     )]
     public class LoggingManagementSampleWebModule : AbpModule
     {
