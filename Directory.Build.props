@@ -1,3 +1,4 @@
 <Project>
   <Import Project="..\..\abp-github\EasyAbpVersion.props" />
+  <Import Project="..\..\abp-github\Directory.Build.props" />
 </Project>
